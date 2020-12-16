@@ -6,12 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="assets\" />
+    <Folder Include="assets\images\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\assets\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\assets\css\" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Program.fs" />
     <None Include="WebSocket.fsproj" />
-    <None Include="index-v.html" />
-    <None Include="main.fsx" />
-    <None Include="sendMsg.fsx" />
-    <None Include="index.html" />
     <None Include="assets\images\chirp.png" />
     <None Include="bin\Debug\netcoreapp3.1\Mono.Cecil.Rocks.dll" />
     <None Include="bin\Debug\netcoreapp3.1\Suave.dll" />
@@ -56,28 +58,20 @@
     <None Include="bin\Debug\netcoreapp3.1\login.html" />
     <None Include="bin\Debug\netcoreapp3.1\assets\images\chirp.png" />
     <None Include="bin\Debug\netcoreapp3.1\assets\css\styles.css" />
-    <None Include="bin\Debug\netcoreapp3.1\wall.html" />
     <None Include="bin\Debug\netcoreapp3.1\dashboard.html" />
+    <None Include="bin\Debug\netcoreapp3.1\wall.html" />
     <None Include=".gitignore" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Suave" Version="2.5.6" />
-    <PackageReference Include="SuaveServerWrapper" Version="0.0.3" />
-    <PackageReference Include="Suave.Testing" Version="2.2.1" />
     <PackageReference Include="FSharp.Core" Version="5.0.0">
       <GeneratePathProperty></GeneratePathProperty>
     </PackageReference>
+    <PackageReference Include="Suave.Testing" Version="2.2.1" />
     <PackageReference Include="FSharp.Json" Version="0.4.0">
       <GeneratePathProperty></GeneratePathProperty>
     </PackageReference>
+    <PackageReference Include="Suave" Version="2.5.6" />
+    <PackageReference Include="SuaveServerWrapper" Version="0.0.3" />
     <PackageReference Include="FSharpx.Collections" Version="2.1.3">
       <GeneratePathProperty></GeneratePathProperty>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="assets\" />
-    <Folder Include="assets\images\" />
-    <Folder Include="bin\Debug\netcoreapp3.1\assets\" />
-    <Folder Include="bin\Debug\netcoreapp3.1\assets\css\" />
   </ItemGroup>
 </Project>
