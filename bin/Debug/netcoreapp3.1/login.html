@@ -1,0 +1,257 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5 well">
+
+                <form id="form-group">
+
+                    <label for="Username">Username</label>
+                    <input type="text" id="Username" name="Username" class="form-control" value="" required>
+
+                    <label for="Password">Password</label>
+                    <input type="password" id="Password" name="Password" class="form-control" value="" required>
+
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5 well">
+
+                <form id="form-tweet">
+
+                    <label for="Tweet">Tweet</label>
+                    <input type="text" id="Tweet" name="Tweet" class="form-control" value="" required>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Tweet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5 well">
+
+                <form id="form-finduser">
+
+                    <label for="Finduser">Finduser</label>
+                    <input type="text" id="Finduser" name="Finduser" class="form-control" value="" required>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">FindUser</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5 well">
+
+                <form id="form-follow">
+
+                    <label for="Follow">Follow</label>
+                    <input type="text" id="Follow" name="Follow" class="form-control" value="" required>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">FollowUser</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5 well">
+
+                <form id="form-mymentions">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">MyMentions</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5 well">
+
+                <form id="form-query">
+
+                    <label for="Query">Query</label>
+                    <input type="text" id="Query" name="Query" class="form-control" value="" required>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Query</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5 well">
+
+                <form id="form-logout">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script language="javascript" type="text/javascript">var wsUri = "ws://localhost:8080/websocket";
+        var output;
+        let myusername;
+
+
+        // need find_user, query_tweet, my_mentions, my_wall, my_following, follow_user
+
+        const form = document.getElementById("form-group");
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            console.log(form)
+
+            let username = form.elements['Username'].value
+            let password = form.elements['Password'].value
+            myusername = username
+
+
+            doSend(JSON.stringify({
+                "Author": username, "Payload": password, "Operation": "Login"
+            }))
+        });
+
+        const form2 = document.getElementById("form-tweet");
+        form2.addEventListener('submit', (event) => {
+            event.preventDefault();
+            console.log(form2)
+
+            let tweet = form2.elements['Tweet'].value
+
+            doSend(JSON.stringify({
+                "Author": myusername, "Payload": tweet, "Operation": "Tweet"
+            }))
+        });
+
+        const form3 = document.getElementById("form-finduser");
+        form3.addEventListener('submit', (event) => {
+            event.preventDefault();
+            console.log(form3)
+
+            let usertofind = form3.elements['Finduser'].value
+
+            doSend(JSON.stringify({
+                "Author": myusername, "Payload": usertofind, "Operation": "FindUser"
+            }))
+        });
+
+        const form4 = document.getElementById("form-follow");
+        form4.addEventListener('submit', (event) => {
+            event.preventDefault();
+            console.log(form4)
+
+            let usertofollow = form4.elements['Follow'].value
+
+            doSend(JSON.stringify({
+                "Author": myusername, "Payload": usertofollow, "Operation": "Follow"
+            }))
+        });
+
+        const form5 = document.getElementById("form-mymentions");
+        form5.addEventListener('submit', (event) => {
+            event.preventDefault();
+            console.log(form5)
+
+            doSend(JSON.stringify({
+                "Author": myusername, "Payload": "", "Operation": "MyMentions"
+            }))
+        });
+
+        const form6 = document.getElementById("form-query");
+        form6.addEventListener('submit', (event) => {
+            event.preventDefault();
+            console.log(form6)
+
+            let querystring = form6.elements['Query'].value
+
+            doSend(JSON.stringify({
+                "Author": myusername, "Payload": querystring, "Operation": "Query"
+            }))
+        });
+
+        const form7 = document.getElementById("form-logout");
+        form7.addEventListener('submit', (event) => {
+            event.preventDefault();
+            console.log(form7)
+
+            doSend(JSON.stringify({
+                "Author": myusername, "Payload": "", "Operation": "Logout"
+            }))
+        });
+
+        function init() {
+            output = document.getElementById("output");
+            testWebSocket();
+        }
+
+        function testWebSocket() {
+            websocket = new WebSocket(wsUri);
+            //let channel = websocket.channel();
+            //websocket.onopen = function (evt) { onOpen(evt) };
+            //websocket.onclose = function(evt) { onClose(evt) };
+            websocket.onmessage = function (evt) { onMessage(evt) };
+            //websocket.onerror = function(evt) { onError(evt) };
+        }
+
+        function onOpen(evt) {
+            writeToScreen("CONNECTED");
+            doSend("WebSocket rocks");
+        }
+
+        function onClose(evt) {
+            writeToScreen("DISCONNECTED");
+        }
+
+        function onMessage(evt) {
+            writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data + '</span>');
+            //websocket.close();
+        }
+
+        function onError(evt) {
+            writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+        }
+
+        function doSend(message) {
+            //writeToScreen("SENT: " + message);
+            websocket.send(message);
+            //channel.push('Login', message);
+        }
+
+        function writeToScreen(message) {
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = message;
+            output.appendChild(pre);
+        }
+
+        window.addEventListener("load", init, false);</script>
+    <div id="output"> </div>
+
+    <div id="scripts">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+
+
+    </div>
+</body>
+</html>

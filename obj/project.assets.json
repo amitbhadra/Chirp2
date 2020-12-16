@@ -1,0 +1,524 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Argu/3.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Argu.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Argu.dll": {}
+        }
+      },
+      "Expecto/4.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Argu": "3.2.0",
+          "FSharp.Core": "3.1.2.5",
+          "Mono.Cecil": "0.9.6.4"
+        },
+        "compile": {
+          "lib/net40/Expecto.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Expecto.dll": {}
+        }
+      },
+      "FSharp.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/FSharp.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FSharp.Core.dll": {}
+        },
+        "resource": {
+          "lib/netstandard2.0/cs/FSharp.Core.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard2.0/de/FSharp.Core.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard2.0/es/FSharp.Core.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard2.0/fr/FSharp.Core.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard2.0/it/FSharp.Core.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard2.0/ja/FSharp.Core.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard2.0/ko/FSharp.Core.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard2.0/pl/FSharp.Core.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard2.0/pt-BR/FSharp.Core.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard2.0/ru/FSharp.Core.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard2.0/tr/FSharp.Core.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard2.0/zh-Hans/FSharp.Core.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard2.0/zh-Hant/FSharp.Core.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
+      "FSharp.Json/0.4.0": {
+        "type": "package",
+        "dependencies": {
+          "FSharp.Core": "4.6.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/FSharp.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FSharp.Json.dll": {}
+        }
+      },
+      "FSharpx.Collections/2.1.3": {
+        "type": "package",
+        "dependencies": {
+          "FSharp.Core": "4.3.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/FSharpx.Collections.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FSharpx.Collections.dll": {}
+        }
+      },
+      "Mono.Cecil/0.9.6.4": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Mono.Cecil.Mdb.dll": {},
+          "lib/net45/Mono.Cecil.Pdb.dll": {},
+          "lib/net45/Mono.Cecil.Rocks.dll": {},
+          "lib/net45/Mono.Cecil.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Mono.Cecil.Mdb.dll": {},
+          "lib/net45/Mono.Cecil.Pdb.dll": {},
+          "lib/net45/Mono.Cecil.Rocks.dll": {},
+          "lib/net45/Mono.Cecil.dll": {}
+        }
+      },
+      "Suave/2.5.6": {
+        "type": "package",
+        "dependencies": {
+          "FSharp.Core": "4.3.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/Suave.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Suave.dll": {}
+        }
+      },
+      "Suave.Testing/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Expecto": "4.0.3",
+          "FSharp.Core": "4.0.0.1",
+          "Suave": "2.2.1"
+        },
+        "compile": {
+          "lib/net40/Suave.Testing.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Suave.Testing.dll": {}
+        }
+      },
+      "SuaveServerWrapper/0.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Suave": "1.1.3"
+        },
+        "compile": {
+          "lib/net45/SuaveServerWrapper.dll": {}
+        },
+        "runtime": {
+          "lib/net45/SuaveServerWrapper.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Argu/3.2.0": {
+      "sha512": "JtuElLhsvN2OBfNO0Gpeuv/3NBXpSmKVrdmrRC/ZwmiSfJSN4NA2ylBGuIkMGcxiXiWJqfqT/mo7LFtMI/JBzA==",
+      "type": "package",
+      "path": "argu/3.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "argu.3.2.0.nupkg.sha512",
+        "argu.nuspec",
+        "lib/net35/Argu.XML",
+        "lib/net35/Argu.dll",
+        "lib/net35/Argu.pdb",
+        "lib/net40/Argu.XML",
+        "lib/net40/Argu.dll",
+        "lib/net40/Argu.pdb"
+      ]
+    },
+    "Expecto/4.0.3": {
+      "sha512": "+Ck2N1yJRp+xBH2wrXyGYuEBEzD/6CYibNOQGrKHOWnB7lMv0iI4ghD3S4VAs6cMZ6Ly+E5n4JdyF0zlIAueTA==",
+      "type": "package",
+      "path": "expecto/4.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "expecto.4.0.3.nupkg.sha512",
+        "expecto.nuspec",
+        "lib/net40/Expecto.dll",
+        "lib/net40/Expecto.dll.mdb",
+        "lib/net40/Expecto.xml"
+      ]
+    },
+    "FSharp.Core/5.0.0": {
+      "sha512": "iHoYXA0VaSQUONGENB1aVafjDDZDZpwu39MtaRCTrmwFW/cTcK0b2yKNVYneFHJMc3ChtsSoM9lNtJ1dYXkHfA==",
+      "type": "package",
+      "path": "fsharp.core/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "fsharp.core.5.0.0.nupkg.sha512",
+        "fsharp.core.nuspec",
+        "lib/netstandard2.0/FSharp.Core.dll",
+        "lib/netstandard2.0/FSharp.Core.xml",
+        "lib/netstandard2.0/cs/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/de/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/es/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/fr/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/it/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/ja/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/ko/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/pl/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/pt-BR/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/ru/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/tr/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/zh-Hans/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/zh-Hant/FSharp.Core.resources.dll"
+      ]
+    },
+    "FSharp.Json/0.4.0": {
+      "sha512": "3QchEhViQdnvJQzVG7M/CIgdCZhDJw4ZzFKMfLqb/j1cucxcUcXvIMxf6rV0ktFn9mmkmw9WOOuIsrG012vkUg==",
+      "type": "package",
+      "path": "fsharp.json/0.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fsharp.json.0.4.0.nupkg.sha512",
+        "fsharp.json.nuspec",
+        "lib/netstandard2.0/FSharp.Json.dll"
+      ]
+    },
+    "FSharpx.Collections/2.1.3": {
+      "sha512": "6GHWjgj4Zj1Iqv9Rsl3qGjjCY6uA5LFnIHM4EKq1co69grpAdliIMRuY1Idhcd+lkZVgFU5y5CdNXaoSuLK4dA==",
+      "type": "package",
+      "path": "fsharpx.collections/2.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fsharpx.collections.2.1.3.nupkg.sha512",
+        "fsharpx.collections.nuspec",
+        "lib/net45/FSharpx.Collections.dll",
+        "lib/net45/FSharpx.Collections.pdb",
+        "lib/net45/FSharpx.Collections.xml",
+        "lib/netstandard2.0/FSharpx.Collections.dll",
+        "lib/netstandard2.0/FSharpx.Collections.pdb",
+        "lib/netstandard2.0/FSharpx.Collections.xml"
+      ]
+    },
+    "Mono.Cecil/0.9.6.4": {
+      "sha512": "C4OOZpuU6YpcnVuLIAnJwbPPSGEf6ShdioMFnRoz/m57hc0a7rZErhGiTseabsckCVEgzepu9mqvmgdMEcGHkg==",
+      "type": "package",
+      "path": "mono.cecil/0.9.6.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Mono.Cecil.Mdb.dll",
+        "lib/net20/Mono.Cecil.Pdb.dll",
+        "lib/net20/Mono.Cecil.dll",
+        "lib/net35/Mono.Cecil.Mdb.dll",
+        "lib/net35/Mono.Cecil.Pdb.dll",
+        "lib/net35/Mono.Cecil.Rocks.dll",
+        "lib/net35/Mono.Cecil.dll",
+        "lib/net40/Mono.Cecil.Mdb.dll",
+        "lib/net40/Mono.Cecil.Pdb.dll",
+        "lib/net40/Mono.Cecil.Rocks.dll",
+        "lib/net40/Mono.Cecil.dll",
+        "lib/net45/Mono.Cecil.Mdb.dll",
+        "lib/net45/Mono.Cecil.Pdb.dll",
+        "lib/net45/Mono.Cecil.Rocks.dll",
+        "lib/net45/Mono.Cecil.dll",
+        "lib/sl5/Mono.Cecil.Rocks.dll",
+        "lib/sl5/Mono.Cecil.dll",
+        "mono.cecil.0.9.6.4.nupkg.sha512",
+        "mono.cecil.nuspec"
+      ]
+    },
+    "Suave/2.5.6": {
+      "sha512": "3Cusxs8m9JxzfF6W8zsSVNTys/lP0gmMmspvCXSxouuK8EjQNmUS4CJmFgJkftsZj0f9z5h3+JfUWzVyBS3OsA==",
+      "type": "package",
+      "path": "suave/2.5.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Suave.dll",
+        "lib/net461/Suave.pdb",
+        "lib/net461/Suave.xml",
+        "lib/netstandard2.0/Suave.dll",
+        "lib/netstandard2.0/Suave.pdb",
+        "lib/netstandard2.0/Suave.xml",
+        "src/Suave/AssemblyInfo.fs",
+        "src/Suave/Authentication.fs",
+        "src/Suave/Authentication.fsi",
+        "src/Suave/Combinators.fs",
+        "src/Suave/Combinators.fsi",
+        "src/Suave/Compression.fs",
+        "src/Suave/ConnectionFacade.fs",
+        "src/Suave/Cookie.fs",
+        "src/Suave/Cookie.fsi",
+        "src/Suave/CookieSerialiser.fs",
+        "src/Suave/DefaultTlsProvider.fs",
+        "src/Suave/Globals.fs",
+        "src/Suave/Headers.fs",
+        "src/Suave/Http.fs",
+        "src/Suave/Http.fsi",
+        "src/Suave/HttpOutput.fs",
+        "src/Suave/Json.fs",
+        "src/Suave/Model.fs",
+        "src/Suave/Native.fs",
+        "src/Suave/Operators.fs",
+        "src/Suave/Owin.fs",
+        "src/Suave/ParsingAndControl.fs",
+        "src/Suave/Sockets/AsyncSocket.fs",
+        "src/Suave/Sockets/AsyncUserToken.fs",
+        "src/Suave/Sockets/BufferManager.fs",
+        "src/Suave/Sockets/ConcurrentPool.fs",
+        "src/Suave/Sockets/Connection.fs",
+        "src/Suave/Sockets/ITransport.fs",
+        "src/Suave/Sockets/SocketBinding.fs",
+        "src/Suave/Sockets/SocketMonad.fs",
+        "src/Suave/Sockets/SocketOp.fs",
+        "src/Suave/Sockets/TcpTransport.fs",
+        "src/Suave/Sockets/TransportStream.fs",
+        "src/Suave/Sscanf.fs",
+        "src/Suave/State.fs",
+        "src/Suave/SuaveConfig.fs",
+        "src/Suave/Tcp.fs",
+        "src/Suave/TcpServerFactory.fs",
+        "src/Suave/Utils/ASCII.fs",
+        "src/Suave/Utils/Aether.fs",
+        "src/Suave/Utils/AsyncExtensions.fs",
+        "src/Suave/Utils/AsyncResultCell.fs",
+        "src/Suave/Utils/Bytes.fs",
+        "src/Suave/Utils/Choice.fs",
+        "src/Suave/Utils/Collections.fs",
+        "src/Suave/Utils/Compression.fs",
+        "src/Suave/Utils/Crypto.fs",
+        "src/Suave/Utils/CultureInfoCache.fs",
+        "src/Suave/Utils/Logging.fs",
+        "src/Suave/Utils/OpenMemoryStream.fs",
+        "src/Suave/Utils/Parse.fs",
+        "src/Suave/Utils/Parsing.fs",
+        "src/Suave/Utils/Property.fs",
+        "src/Suave/Utils/RangedStream.fs",
+        "src/Suave/Utils/ThreadSafeRandom.fs",
+        "src/Suave/Utils/TraceHeader.fs",
+        "src/Suave/Utils/YoLo.fs",
+        "src/Suave/Web.fs",
+        "src/Suave/WebPart.fs",
+        "src/Suave/WebPart.fsi",
+        "src/Suave/WebSocket.fs",
+        "suave.2.5.6.nupkg.sha512",
+        "suave.nuspec"
+      ]
+    },
+    "Suave.Testing/2.2.1": {
+      "sha512": "GoUxm27eJo2ai8bxL3vlHWpDjDp3lacXF3F35N3trrqE6R4Ay7gSrf1n8NInP28/2+7XVATpNp0k6Mof1mnj7Q==",
+      "type": "package",
+      "path": "suave.testing/2.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Suave.Testing.dll",
+        "lib/net40/Suave.Testing.dll.mdb",
+        "lib/net40/Suave.Testing.xml",
+        "suave.testing.2.2.1.nupkg.sha512",
+        "suave.testing.nuspec"
+      ]
+    },
+    "SuaveServerWrapper/0.0.3": {
+      "sha512": "Ttcgf0ju0Kq2zja3ltZ0HxCW4vAPQ6JZP6GpAL2r6SVfaD2FDSOI/0PG+5JrDeM3QTcRM3NMXDEM6N2ZntUovQ==",
+      "type": "package",
+      "path": "suaveserverwrapper/0.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/SuaveServerWrapper.dll",
+        "suaveserverwrapper.0.0.3.nupkg.sha512",
+        "suaveserverwrapper.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "FSharp.Core >= 5.0.0",
+      "FSharp.Json >= 0.4.0",
+      "FSharpx.Collections >= 2.1.3",
+      "Suave >= 2.5.6",
+      "Suave.Testing >= 2.2.1",
+      "SuaveServerWrapper >= 0.0.3"
+    ]
+  },
+  "packageFolders": {
+    "/Users/amitbhadra/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/amitbhadra/Projects/Twitter2/WebSocket/WebSocket.fsproj",
+      "projectName": "WebSocket",
+      "projectPath": "/Users/amitbhadra/Projects/Twitter2/WebSocket/WebSocket.fsproj",
+      "packagesPath": "/Users/amitbhadra/.nuget/packages/",
+      "outputPath": "/Users/amitbhadra/Projects/Twitter2/WebSocket/obj/",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "/Users/amitbhadra/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
+        "dependencies": {
+          "FSharp.Core": {
+            "target": "Package",
+            "version": "[5.0.0, )",
+            "generatePathProperty": true
+          },
+          "FSharp.Json": {
+            "target": "Package",
+            "version": "[0.4.0, )"
+          },
+          "FSharpx.Collections": {
+            "target": "Package",
+            "version": "[2.1.3, )"
+          },
+          "Suave": {
+            "target": "Package",
+            "version": "[2.5.6, )",
+            "generatePathProperty": true
+          },
+          "Suave.Testing": {
+            "target": "Package",
+            "version": "[2.2.1, )",
+            "generatePathProperty": true
+          },
+          "SuaveServerWrapper": {
+            "target": "Package",
+            "version": "[0.0.3, )",
+            "generatePathProperty": true
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Argu 3.2.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Argu",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Expecto 4.0.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Expecto",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Mono.Cecil 0.9.6.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Mono.Cecil",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Suave.Testing 2.2.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Suave.Testing",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'SuaveServerWrapper 0.0.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "SuaveServerWrapper",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}

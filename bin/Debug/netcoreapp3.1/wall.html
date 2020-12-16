@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8" />
+<html>
+<head>
+
+    <title>Signup - FsTweet</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <form id="form-signup">
+
+            <label for="Email" class="sr-only">Email address</label>
+            <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required autofocus value=>
+            <label for="Username" class="sr-only">Username</label>
+            <input type="text" id="Username" name="Username" class="form-control" placeholder="Username" required value=>
+            <label for="Password" class="sr-only">Password</label>
+            <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+
+        </form>
+    </div>
+
+    <script language="javascript" type="text/javascript">var wsUri = "ws://localhost:8080/websocket";
+        var output;
+
+        const form = document.getElementById("form-signup");
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            console.log(form)
+
+            let email = form.elements['Email'].value
+            let username = form.elements['Username'].value
+            let password = form.elements['Password'].value
+
+
+            doSend(JSON.stringify({
+                "Author": username, "Payload": email.concat(",",username,",",password), "Operation": "SignUp"
+            }))
+            //doSend(JSON.stringify( {form.elements['fname'].value + "|" + form.elements['lastname'].value + "|" + "signup" }))
+        });
+
+        function init() {
+            output = document.getElementById("output");
+            testWebSocket();
+        }
+
+        function testWebSocket() {
+            websocket = new WebSocket(wsUri);
+            //websocket.onopen = function (evt) { onOpen(evt) };
+            //websocket.onclose = function(evt) { onClose(evt) };
+            websocket.onmessage = function (evt) { onMessage(evt) };
+            //websocket.onerror = function(evt) { onError(evt) };
+        }
+
+        function onOpen(evt) {
+            writeToScreen("CONNECTED");
+            doSend("WebSocket rocks");
+        }
+
+        function onClose(evt) {
+            writeToScreen("DISCONNECTED");
+        }
+
+        function onMessage(evt) {
+            writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data + '</span>');
+            //websocket.close();
+        }
+
+        function onError(evt) {
+            writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+        }
+
+        function doSend(message) {
+            //writeToScreen("SENT: " + message);
+            websocket.send(message);
+        }
+
+        function writeToScreen(message) {
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = message;
+            output.appendChild(pre);
+        }
+
+        window.addEventListener("load", init, false);</script>
+    <div id="output"> </div>
+
+    
+
+<div id="scripts">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Program.fs" />
+    <None Include="WebSocket.fsproj" />
+    <None Include="index-v.html" />
+    <None Include="main.fsx" />
+    <None Include="sendMsg.fsx" />
+    <None Include="index.html" />
+    <None Include="assets\images\chirp.png" />
+    <None Include="bin\Debug\netcoreapp3.1\Mono.Cecil.Rocks.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Suave.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Argu.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\WebSocket.deps.json" />
+    <None Include="bin\Debug\netcoreapp3.1\Mono.Cecil.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\WebSocket.runtimeconfig.json" />
+    <None Include="bin\Debug\netcoreapp3.1\Suave.Testing.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\WebSocket.pdb" />
+    <None Include="bin\Debug\netcoreapp3.1\Expecto.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\SuaveServerWrapper.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\WebSocket.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\WebSocket.runtimeconfig.dev.json" />
+    <None Include="bin\Debug\netcoreapp3.1\Mono.Cecil.Pdb.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\FSharp.Core.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Mono.Cecil.Mdb.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\zh-Hans\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\zh-Hant\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\pl\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\ja\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\it\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\cs\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\ru\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\pt-BR\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\_temporary_compressed_files\pcdp0vs5.kek" />
+    <None Include="bin\Debug\netcoreapp3.1\_temporary_compressed_files\lqslas3p.sxb" />
+    <None Include="bin\Debug\netcoreapp3.1\_temporary_compressed_files\titvj5ax.40g" />
+    <None Include="bin\Debug\netcoreapp3.1\_temporary_compressed_files\4jfuy5jz.zjh" />
+    <None Include="bin\Debug\netcoreapp3.1\_temporary_compressed_files\vnsds2yd.joq" />
+    <None Include="bin\Debug\netcoreapp3.1\_temporary_compressed_files\anoiasyg.3fi" />
+    <None Include="bin\Debug\netcoreapp3.1\_temporary_compressed_files\1jc3sp5k.u31" />
+    <None Include="bin\Debug\netcoreapp3.1\_temporary_compressed_files\2c020pi4.e2r" />
+    <None Include="bin\Debug\netcoreapp3.1\_temporary_compressed_files\qmtqk5c1.if2" />
+    <None Include="bin\Debug\netcoreapp3.1\_temporary_compressed_files\dmnyyfhx.xe1" />
+    <None Include="bin\Debug\netcoreapp3.1\_temporary_compressed_files\c3qzdc3r.sue" />
+    <None Include="bin\Debug\netcoreapp3.1\de\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\ko\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\fr\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\es\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\tr\FSharp.Core.resources.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\signup.html" />
+    <None Include="bin\Debug\netcoreapp3.1\login.html" />
+    <None Include="bin\Debug\netcoreapp3.1\assets\images\chirp.png" />
+    <None Include="bin\Debug\netcoreapp3.1\assets\css\styles.css" />
+    <None Include="bin\Debug\netcoreapp3.1\wall.html" />
+    <None Include="bin\Debug\netcoreapp3.1\dashboard.html" />
+    <None Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Suave" Version="2.5.6" />
+    <PackageReference Include="SuaveServerWrapper" Version="0.0.3" />
+    <PackageReference Include="Suave.Testing" Version="2.2.1" />
+    <PackageReference Include="FSharp.Core" Version="5.0.0">
+      <GeneratePathProperty></GeneratePathProperty>
+    </PackageReference>
+    <PackageReference Include="FSharp.Json" Version="0.4.0">
+      <GeneratePathProperty></GeneratePathProperty>
+    </PackageReference>
+    <PackageReference Include="FSharpx.Collections" Version="2.1.3">
+      <GeneratePathProperty></GeneratePathProperty>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\" />
+    <Folder Include="assets\images\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\assets\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\assets\css\" />
+  </ItemGroup>
+</Project>

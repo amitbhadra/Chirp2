@@ -1,0 +1,196 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Twitter</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+  </head>
+
+  <body>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-offset-3 col-md-5 well">
+
+                  <form id="form-group">
+
+                      <label for="Username">Username</label>
+                      <input type="text" id="Username" name="Username" class="form-control" value="" required>
+
+                      <label for="Password">Password</label>
+                      <input type="password" id="Password" name="Password" class="form-control" value="" required>
+
+                      <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+
+      <div class="container">
+          <header class="header">
+              <nav role="navigation">
+                  <ul class="nav nav-pills pull-right">
+                  </ul>
+              </nav>
+              <span class="logo"></span>
+          </header>
+
+          <p class="alert alert-info" role="alert"></p>
+          <p class="alert alert-danger" role="alert"></p>
+
+          <main role="main">
+              <div class="container">
+                  <div align="left">
+                      <a href="http://localhost:4000/" id="btnLogOut"
+                         style="text-align:right; float:right">Log Out</a>
+                  </div>
+                  <div class="row">
+                      <h2 style="text-align:center">
+                          <img src="assets/images/chirp.png" style="height:105px;width:130px;text-align: right">
+                          <br />Dashboard
+                      </h2>
+                      <div class="vl" style="height: 370px;">
+                          <span class="vl-innertext">=></span>
+                      </div>
+
+                      <!-- Post a tweet -->
+                      <div class="col">
+                          <div class="">
+                              <p><strong>Post a tweet:</strong></p>
+                          </div>
+
+                          <input type="text"
+                                 id="tweetContent" placeholder="Your Tweets">
+                          <input type="submit" id="btnTweet"
+                                 style="background: rgb(0, 172, 237);" value="Tweet">
+                      </div>
+                      <div class="col">
+                          <div class="" id="tweets" style="background-color: transparent;">
+                              <p><strong>Live tweets:</strong></p>
+                          </div>
+                          <div id="tweet-list" style="
+                background: white;
+                height: 200px;
+                width: 370px;
+                overflow: scroll;
+                margin-bottom: 50px;
+                text-align: left;
+                border-radius: 4px;
+            "></div>
+                          <input type="submit"
+                                 style="background: rgb(0, 172, 237);" id="btnRetweet" value="Retweet" />
+                      </div>
+                  </div>
+
+
+                  <!-- Subscribe -->
+                  <div class="row">
+                      <h2 style="text-align:center">
+                      </h2>
+                      <div class="vl" style="height: 370px;">
+                          <span class="vl-innertext"></span>
+                      </div>
+
+                      <div class="col">
+                          <div class="">
+                              <p><strong>Subscribe:</strong></p>
+                          </div>
+
+                          <input type="text"
+                                 id="username2" placeholder="Username">
+                          <input type="submit" id="btnFollow"
+                                 style="background: rgb(0, 172, 237);" value="Follow">
+                          <br />
+                          <div id="followsArea"
+                               style="
+                     background: white;
+                     height: 200px;
+                     width: 371px;
+                     overflow: scroll;
+                     margin-bottom: 50px;
+                     text-align: left;
+                     border-radius: 4px;
+                     "></div>
+                      </div>
+                      <div class="col">
+                          <div class="">
+                              <p><strong>Query your tweets:</strong></p>
+                          </div>
+                          <input type="submit" id="btnQueryTweets"
+                                 style="background: rgb(0, 172, 237);" value="Query Tweets">
+                          <br />
+                          <p><strong>My News Feed:</strong></p>
+                          <div id="queryArea" style="background: white;
+                            height: 200px;
+                            width: 370px;
+                            overflow: scroll;
+                            margin-bottom: 50px;
+                            text-align: left;
+                "></div>
+                      </div>
+                  </div>
+
+                  <!-- Hashtags -->
+                  <div class="row">
+                      <h2 style="text-align:center">
+                      </h2>
+                      <div class="vl" style="height: 370px;">
+                          <span class="vl-innertext"></span>
+                      </div>
+
+                      <div class="col">
+                          <div class="">
+                              <p><strong>Search by Hashtag:</strong></p>
+                          </div>
+
+                          <input type="text"
+                                 id="hashtag" placeholder="#tag here">
+                          <input type="submit" id="btnhashtag"
+                                 style="background: rgb(0, 172, 237);" value="Search">
+                          <br />
+                          <p><strong>Hashtags:</strong></p>
+                          <div id="hashtagArea" style="
+                         background: white;
+                         height: 200px;
+                         width: 371px;
+                         overflow: scroll;
+                         margin-bottom: 50px;
+                         text-align: left;
+                         border-radius: 4px;
+                         "></div>
+                      </div>
+                      <div class="col">
+                          <div class="">
+                              <p><strong>Get My mentions!!:</strong></p>
+                          </div>
+                          <input type="submit" id="btnMyMentions"
+                                 style="background: rgb(0, 172, 237);" value="Get my mentions">
+                          <br />
+                          <p><strong>My Mentions:</strong></p>
+                          <div id="mentionsArea" style="background: white;
+                                height: 200px;
+                                width: 370px;
+                                overflow: scroll;
+                                margin-bottom: 50px;
+                                text-align: left;
+                    "></div>
+                      </div>
+                  </div>
+
+              </div>
+
+
+          </main>
+
+      </div> <!-- /container -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <script type="text/javascript" src="assets/js/app.js"></script>
+      <iframe src="assets/css/phoenix/live_reload/frame" style="display: none;"></iframe>
+  </body>
+</html>
