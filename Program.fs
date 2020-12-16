@@ -121,20 +121,12 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
       let! msg = webSocket.read()
 
       match msg with
-      // the message has type (Opcode * byte [] * bool)
-      //
-      // Opcode type:
-      //   type Opcode = Continuation | Text | Binary | Reserved | Close | Ping | Pong
-      //
-      // byte [] contains the actual message
-      //
-      // the last element is the FIN byte, explained later
       | (Text, data, true) ->
         // the message can be converted to a string
         let str = UTF8.toString data
 
         let message = Json.deserialize<ApiMessage> str
-        printfn "Actor called with %A" message
+        printfn "Server called with %A" message
         
         let operation = message.Operation
         let username = message.Author
@@ -154,10 +146,11 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
                 tweetsToBeSent <- tweetsToBeSent.Add(username, [|{Author = ""; Tweet = ""}|])
                 myMentions <- myMentions.Add(username, [|{Author = ""; Tweet = ""}|])
                 userSubscribedTweets <- userSubscribedTweets.Add(username, [|""|])
-                response <- "Signup done, now login"
+                let data = {Author = "Server" ; Payload = "Signup done, now login!" ; Operation = "SignUp"}
+                response <- Json.serialize data
             else
-                response <- "Already registered, now login"
-            printfn "str--%s" str
+                let data = {Author = "Server" ; Payload = "Already registered, now login!" ; Operation = "SignUp"}
+                response <- Json.serialize data
             let byteResponse =
                 response
                 |> System.Text.Encoding.ASCII.GetBytes
@@ -170,7 +163,8 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
             let mutable response = ""
             if (allUsers.ContainsKey(username)) then
                 if payload = allUsers.[username] then
-                    response <- "Logged in!"
+                    let data = {Author = "Server" ; Payload = "Logged in!" ; Operation = "Login"}
+                    response <- Json.serialize data
                     allUserRefs <- allUserRefs.Add(username, webSocket)
                     onlineUsers <- Array.concat [| onlineUsers ; [|username|] |]
                     let byteResponse =
@@ -181,23 +175,25 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
                     do! allUserRefs.[username].send Text byteResponse true
                     let tweetsToBeSentToUser = tweetsToBeSent.[username]
                     if tweetsToBeSentToUser.Length > 1 then
-                        let data = {Author = username ; Payload = tweetsToBeSentToUser |> string; Operation = "TweetsWhileOffline"}
+                        let data = {Author = username ; Payload = tweetsToBeSentToUser |> Json.serialize ; Operation = "TweetsWhileOffline"}
                         let response = Json.serialize data
                         let byteResponse =
                             response
                             |> System.Text.Encoding.ASCII.GetBytes
                             |> ByteSegment
-
+                        tweetsToBeSent <- tweetsToBeSent.Add(username, [||])
                         do! allUserRefs.[username].send Text byteResponse true
                 else
-                    response <- "Incorrect Password, please try again!"
+                    let data = {Author = "Server" ; Payload = "ERROR: Incorrect Password, please try again!" ; Operation = "Login"}
+                    response <- Json.serialize data
                     let byteResponse =
                         response
                         |> System.Text.Encoding.ASCII.GetBytes
                         |> ByteSegment
                     do! webSocket.send Text byteResponse true
             else
-                response <- "User not found, first register the user!"
+                let data = {Author = "Server" ; Payload = "ERROR: User not found, first register the user!" ; Operation = "Login"}
+                response <- Json.serialize data
                 let byteResponse =
                     response
                     |> System.Text.Encoding.ASCII.GetBytes
@@ -239,21 +235,23 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
                     for subs in allSubscribers do
                         if subs <> "" then
                             // should we send it or not?                    
-                            if not (isOnline username) then
+                            if not (isOnline subs) then
                                 let mutable usertweetsToBeSent = tweetsToBeSent.[subs]
                                 usertweetsToBeSent <- Array.concat [| usertweetsToBeSent ; [|data|] |]
                                 tweetsToBeSent <- tweetsToBeSent.Add(subs, usertweetsToBeSent)
                             else
                                 do! allUserRefs.[subs].send Text byteResponse true
                 else
-                    let response = "User is offline, first login!"
+                    let data = {Author = "Server" ; Payload = "ERROR: User is offline, first login!" ; Operation = "Login"}
+                    let response = Json.serialize data
                     let byteResponse =
                         response
                         |> System.Text.Encoding.ASCII.GetBytes
                         |> ByteSegment
                     do! webSocket.send Text byteResponse true
             else
-                let response = "User not found, first register the user!"
+                let data = {Author = "Server" ; Payload = "ERROR: User not found, first register the user!" ; Operation = "Login"}
+                let response = Json.serialize data
                 let byteResponse =
                     response
                     |> System.Text.Encoding.ASCII.GetBytes
@@ -271,7 +269,8 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
                         let data = {UserName = payload ; Tweets = allTweetsByUser |> String.concat "////" |> string; Followers = myFollowers |> String.concat "////" ; Following =  myFollowings |> String.concat "////" }
                         response <- Json.serialize data
                     else
-                        response <- "User not found"
+                        let data = {Author = "Server" ; Payload = "ERROR: User not found!" ; Operation = "FindUser"}
+                        response <- Json.serialize data
 
                     let byteResponse =
                         response
@@ -279,14 +278,16 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
                         |> ByteSegment
                     do! allUserRefs.[username].send Text byteResponse true
                 else
-                    let response = "User is offline, first login!"
+                    let data = {Author = "Server" ; Payload = "ERROR: User is offline, first login!" ; Operation = "FindUser"}
+                    let response = Json.serialize data
                     let byteResponse =
                         response
                         |> System.Text.Encoding.ASCII.GetBytes
                         |> ByteSegment
                     do! webSocket.send Text byteResponse true
             else
-                let response = "User not found, first register the user!"
+                let data = {Author = "Server" ; Payload = "ERROR: User not found, first register the user!" ; Operation = "FindUser"}
+                let response = Json.serialize data
                 let byteResponse =
                     response
                     |> System.Text.Encoding.ASCII.GetBytes
@@ -304,7 +305,9 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
                     userSubscribing <- Array.concat [| userSubscribing ; [|payload|] |] 
                     subscribing <- subscribing.Add(username, userSubscribers)
 
-                    let response = sprintf "%s is subscribing to %s" username payload
+                    let response_str = sprintf "%s is subscribing to %s" username payload
+                    let data = {Author = "Server" ; Payload = response_str ; Operation = "Follow"}
+                    let response = Json.serialize data
                     printfn "%s is subscribing to %s" username payload
                     let byteResponse =
                         response
@@ -314,14 +317,16 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
                     do! allUserRefs.[username].send Text byteResponse true
                     do! allUserRefs.[payload].send Text byteResponse true
                 else
-                    let response = "User is offline, first login!"
+                    let data = {Author = "Server" ; Payload = "ERROR: User is offline, first login!" ; Operation = "Follow"}
+                    let response = Json.serialize data
                     let byteResponse =
                         response
                         |> System.Text.Encoding.ASCII.GetBytes
                         |> ByteSegment
                     do! webSocket.send Text byteResponse true
             else
-                let response = "User not found, first register the user!"
+                let data = {Author = "Server" ; Payload = "ERROR: User not found, first register the user!" ; Operation = "Follow"}
+                let response = Json.serialize data
                 let byteResponse =
                     response
                     |> System.Text.Encoding.ASCII.GetBytes
@@ -342,14 +347,16 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
 
                     do! allUserRefs.[username].send Text byteResponse true
                 else
-                    let response = "User is offline, first login!"
+                    let data = {Author = "Server" ; Payload = "ERROR: User is offline, first login!" ; Operation = "MyMentions"}
+                    let response = Json.serialize data
                     let byteResponse =
                         response
                         |> System.Text.Encoding.ASCII.GetBytes
                         |> ByteSegment
                     do! webSocket.send Text byteResponse true
             else
-                let response = "User not found, first register the user!"
+                let data = {Author = "Server" ; Payload = "ERROR: User not found, first register the user!" ; Operation = "MyMentions"}
+                let response = Json.serialize data
                 let byteResponse =
                     response
                     |> System.Text.Encoding.ASCII.GetBytes
@@ -367,7 +374,6 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
                             let data = {Author = users |> string; Tweet = tweets |> string}
                             let data_json = Json.serialize data
                             allTweetsWithQueryString <- Array.concat [| allTweetsWithQueryString ; [|data_json|] |]
-                        //allTweetsWithQueryString <- Array.concat [| allTweetsWithQueryString ; [|thisUsersQueryTweets|] |]
                     let data = {Author = username ; Payload = allTweetsWithQueryString |> String.concat "////" |> string; Operation = "Query"}
                     let response = Json.serialize data
                     let byteResponse =
@@ -377,14 +383,16 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
 
                     do! allUserRefs.[username].send Text byteResponse true
                 else
-                    let response = "User is offline, first login!"
+                    let data = {Author = "Server" ; Payload = "ERROR: User is offline, first login!" ; Operation = "Query"}
+                    let response = Json.serialize data
                     let byteResponse =
                         response
                         |> System.Text.Encoding.ASCII.GetBytes
                         |> ByteSegment
                     do! webSocket.send Text byteResponse true
             else
-                let response = "User not found, first register the user!"
+                let data = {Author = "Server" ; Payload = "ERROR: User not found, first register the user!" ; Operation = "Query"}
+                let response = Json.serialize data
                 let byteResponse =
                     response
                     |> System.Text.Encoding.ASCII.GetBytes
@@ -395,7 +403,8 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
             if (allUserRefs.ContainsKey(username)) then
                 if isOnline(username) then
                     onlineUsers <- onlineUsers |> Array.filter ((<>) username )
-                    let response = "Logged out!"
+                    let data = {Author = "Server" ; Payload = "Logged out!" ; Operation = "Logout"}
+                    let response = Json.serialize data
                     let byteResponse =
                         response
                         |> System.Text.Encoding.ASCII.GetBytes
@@ -403,7 +412,8 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
 
                     do! allUserRefs.[username].send Text byteResponse true
                 else
-                    let response = "User is offline, first login!"
+                    let data = {Author = "Server" ; Payload = "ERROR: User is offline, first login!" ; Operation = "Logout"}
+                    let response = Json.serialize data
                     let byteResponse =
                         response
                         |> System.Text.Encoding.ASCII.GetBytes
@@ -422,7 +432,6 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
       | _ -> ()
     }
 
-/// An example of explictly fetching websocket errors and handling them in your codebase.
 let wsWithErrorHandling (webSocket : WebSocket) (context: HttpContext) = 
    
    let exampleDisposableResource = { new IDisposable with member __.Dispose() = printfn "Resource needed by websocket connection disposed" }
@@ -431,11 +440,8 @@ let wsWithErrorHandling (webSocket : WebSocket) (context: HttpContext) =
    async {
     let! successOrError = websocketWorkflow
     match successOrError with
-    // Success case
     | Choice1Of2() -> ()
-    // Error case
     | Choice2Of2(error) ->
-        // Example error handling logic here
         printfn "Error: [%A]" error
         exampleDisposableResource.Dispose()
         
@@ -450,7 +456,6 @@ let app : WebPart =
     GET >=> choose [ path "/" >=> file "index.html"; browseHome ]
     NOT_FOUND "Found no handlers." ]
 
-//[<EntryPoint>]
 let myCfg =
   { defaultConfig with
       bindings = [ HttpBinding.createSimple HTTP "127.0.0.1" 8082 ]
@@ -460,17 +465,4 @@ let main argv =
   startWebServer { defaultConfig with logger = Targets.create Verbose [||] } app
   0
 
-//
-// The FIN byte:
-//
-// A single message can be sent separated by fragments. The FIN byte indicates the final fragment. Fragments
-//
-// As an example, this is valid code, and will send only one message to the client:
-//
-// do! webSocket.send Text firstPart false
-// do! webSocket.send Continuation secondPart false
-// do! webSocket.send Continuation thirdPart true
-//
-// More information on the WebSocket protocol can be found at: https://tools.ietf.org/html/rfc6455#page-34
-//
 main 0
