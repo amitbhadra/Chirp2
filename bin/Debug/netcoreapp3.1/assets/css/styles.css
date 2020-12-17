@@ -5,14 +5,14 @@
 
 @media (min-width: 768px) {
     .container {
-        max-width: 730px;
+        max-width: 100%;
+
     }
 }
 
 .container-narrow > hr {
     margin: 30px 0;
 }
-
 /* Guest Home Page */
 
 .jumbotron {
@@ -72,8 +72,8 @@
         border-top-right-radius: 0;
     }
 
-p.well {
-    margin-top: 50px
+.well {
+    margin: 5px 5px 5px 5px
 }
 
 .tweet_button {
